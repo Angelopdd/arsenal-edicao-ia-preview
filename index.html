@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Seus prompts de edição com IA, organizados por profissão. Encontre, copie e use no Claude Code.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#0A0D16">
+  <title>Arsenal de edição com IA — Biblioteca</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="catalog.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h5m4 0h7M4 12h10m4 0h2M4 18h2m4 0h10"/><circle cx="11" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16M12 5C9 3 5 3 3 4v15c3-1 6-1 9 2 3-3 6-3 9-2V4c-2-1-6-1-9 1Z"/></symbol>
+  </svg>
+  <a class="skip-link" href="#search">Ir para os prompts</a>
+  <header class="app-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Arsenal de edição com IA, início"><img src="logo.png" alt="Arsenal de edição com IA" width="1992" height="800"></a>
+      <nav class="header-actions" aria-label="Navegação principal">
+        <button type="button" class="button button-quiet" id="open-guide"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Como usar</span></button>
+        <a class="button button-secondary" href="Arsenal-201-prompts-com-presets.zip" download><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>Baixar acervo</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="inicio" class="shell">
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="intro-copy"><p class="eyebrow"><span aria-hidden="true"></span>SUA BIBLIOTECA DE EDIÇÃO</p><h1 id="intro-title">Sua profissão.<br><span>Sua próxima edição.</span></h1><p>Encontre o prompt, copie e leve sua ideia para o Claude Code.</p></div>
+      <div class="intro-stats" aria-label="Conteúdo da biblioteca"><div><strong>201<span aria-hidden="true">↗</span></strong><span>prompts completos</span></div><div><strong>18</strong><span>áreas profissionais</span></div></div>
+    </section>
+    <section id="biblioteca" class="library-layout" aria-label="Biblioteca de prompts">
+      <aside class="category-sidebar" aria-label="Filtrar por área"><p class="sidebar-label">EXPLORE POR ÁREA</p><nav id="category-nav" aria-label="Áreas profissionais"></nav><p class="sidebar-footnote">Uma direção de edição<br>para cada profissão.</p></aside>
+      <div class="library-main">
+        <div class="toolbar"><div class="search-box"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="search">Buscar profissão ou assunto</label><input id="search" type="search" placeholder="Qual é a sua profissão?" autocomplete="off" spellcheck="false"><kbd class="search-shortcut" aria-hidden="true">/</kbd></div><div class="mobile-category"><label class="sr-only" for="category-select">Área profissional</label><select id="category-select"></select></div></div>
+        <div class="results-row"><div class="view-switch" role="group" aria-label="Mostrar prompts"><button class="view-button active" data-view="all" type="button" aria-pressed="true">Todos</button><button class="view-button" data-view="favorites" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Favoritos <span id="favorites-count">0</span></button></div><p id="results-label" role="status" aria-live="polite">201 prompts</p></div>
+        <div id="prompt-grid" class="prompt-grid"></div>
+        <div id="empty-state" class="empty-state" hidden><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><h2 id="empty-title">Nenhum prompt encontrado.</h2><p id="empty-description">Tente outra busca ou explore todas as áreas.</p><button class="button button-secondary" id="reset-filters" type="button">Ver todos</button></div>
+        <div class="load-more-wrap"><button class="button button-secondary" id="load-more" type="button">Mostrar mais <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p id="pagination-note" class="pagination-note"></p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell app-footer"><p>Arsenal de edição com IA <span>·</span> Sua ideia, com direção.</p><p>Claude Code + skill do-bruto-ao-pronto</p></footer>
+  <noscript><p class="shell small-note">Ative o JavaScript para buscar e copiar os prompts. O acervo completo também está no arquivo ZIP em “Baixar acervo”.</p></noscript>
+
+  <dialog id="guide-dialog" class="modal" aria-labelledby="guide-title">
+    <div class="modal-heading"><div><p class="eyebrow">DO BRUTO AO PRONTO</p><h2 id="guide-title" tabindex="-1">Escolha. Copie. Edite.</h2></div><button class="icon-button modal-close" type="button" data-close="guide-dialog" aria-label="Fechar instruções"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="modal-body"><ol class="steps"><li><strong>Encontre sua profissão.</strong><p>Use a busca ou escolha uma área. Cada caixa contém o prompt completo.</p></li><li><strong>Clique em “Copiar”.</strong><p>Cole no Claude Code e informe o caminho do vídeo. Em “Ajustar opções”, você pode preencher as preferências antes de copiar.</p></li><li><strong>Revise o resultado.</strong><p>Aprove primeiro a fala limpa. Depois, confira as cenas, as legendas e o som da montagem.</p></li></ol><p class="small-note">Use o Claude Code local com a skill <strong>do-bruto-ao-pronto</strong> instalada e acesso à pasta do vídeo.</p><details class="resource-note"><summary>Sobre os presets e os visuais</summary><p>Os presets são direções de edição que o Claude aplica no projeto e adapta à sua gravação. Suas preferências têm prioridade.</p><p>Figuras técnicas em 3D dependem de material adequado. Quando faltar, o prompt orienta uma alternativa ilustrativa em 2D.</p><p>Os novos perfis foram revisados em texto e compatibilidade. O resultado de cada vídeo precisa ser conferido antes de aprovar.</p></details></div>
+  </dialog>
+
+  <dialog id="config-dialog" class="modal" aria-labelledby="config-title">
+    <div class="modal-heading"><div><p id="config-profession" class="eyebrow">SUAS PREFERÊNCIAS</p><h2 id="config-title" tabindex="-1">Ajustar opções</h2></div><button class="icon-button modal-close" type="button" data-close="config-dialog" aria-label="Fechar opções"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <form id="config-form" class="modal-body"><p class="small-note">Preencha o que quiser. Os campos vazios mantêm a direção do prompt.</p><div class="config-grid">
+      <label class="field field-wide"><span>Caminho do vídeo</span><input name="video" type="text" placeholder="C:\MeusVideos\gravacao.mp4" autocomplete="off"></label>
+      <label class="field field-wide"><span>Pasta de saída</span><input name="output" type="text" placeholder="Automática" autocomplete="off"></label>
+      <label class="field"><span>Formato</span><select name="format"><option value="">Do prompt</option><option>AUTOMÁTICO</option><option>REELS 9:16</option><option>YOUTUBE 16:9</option></select></label>
+      <label class="field"><span>Qualidade</span><select name="quality"><option value="">Do prompt</option><option>1080p30</option><option>1080p60</option><option>4K</option></select></label>
+      <label class="field"><span>Duração</span><input name="duration" type="text" placeholder="Conteúdo completo ou até 60 segundos"></label>
+      <label class="field"><span>Preset</span><select name="preset"><option value="">Recomendado da profissão</option><option>AUTOMÁTICO LIVRE</option></select></label>
+      <label class="field"><span>Estilo visual</span><input name="style" type="text" placeholder="Automático ou preferência"></label>
+      <label class="field"><span>Legenda</span><input name="caption" type="text" placeholder="Automática ou preferência"></label>
+      <label class="field field-wide"><span>Complementos</span><input name="extras" type="text" placeholder="Automáticos, NENHUM ou descreva"></label>
+      <label class="field field-wide"><span>Materiais de apoio, logo e referências</span><input name="materials" type="text" placeholder="Nenhum ou caminhos dos arquivos" autocomplete="off"></label>
+    </div><div class="form-actions"><button id="reset-config" class="button button-quiet" type="button">Restaurar original</button><button class="button button-primary modal-submit" type="submit">Aplicar</button></div></form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
